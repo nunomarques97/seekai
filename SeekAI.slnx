@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SeekAI.Core/SeekAI.Core.csproj" />
+    <Project Path="src/SeekAI/SeekAI.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SeekAI.Tests/SeekAI.Tests.csproj" />
+  </Folder>
+</Solution>

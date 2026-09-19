@@ -1,0 +1,1 @@
+FORJA release checklist: build the desktop application, test keyboard shortcuts, and publish the installer.

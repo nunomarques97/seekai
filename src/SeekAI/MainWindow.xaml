@@ -1,0 +1,15 @@
+﻿<Window x:Class="SeekAI.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="SeekAI" Width="760" Height="530" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="True" Topmost="True" PreviewKeyDown="OnKeyDown">
+ <Border BorderBrush="#A8B7D1" BorderThickness="1" Padding="22">
+  <Grid><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+   <DockPanel Margin="0,0,0,15"><Button DockPanel.Dock="Right" Content="Settings" Click="SettingsClick"/><StackPanel><TextBlock Text="SeekAI" FontSize="22" FontWeight="SemiBold"/><TextBlock Text="Your files. Their meaning. All local." Foreground="#63728A" FontSize="12"/></StackPanel></DockPanel>
+   <TextBox x:Name="Query" Grid.Row="1" AutomationProperties.Name="Search my computer" FontSize="20" Padding="12" Background="White" BorderBrush="#BAC8DE" TextChanged="QueryChanged" MaxLength="1000"/>
+   <ListBox x:Name="Results" Grid.Row="2" Margin="0,14,0,10" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseLeftButtonUp="ResultClick">
+    <ListBox.ItemContainerStyle><Style TargetType="ListBoxItem"><Setter Property="HorizontalContentAlignment" Value="Stretch"/><Setter Property="Padding" Value="10,8"/><Setter Property="Margin" Value="0,0,0,4"/></Style></ListBox.ItemContainerStyle>
+    <ListBox.ItemTemplate><DataTemplate><StackPanel><DockPanel><TextBlock Text="{Binding Match}" DockPanel.Dock="Right" Foreground="#315FB5" FontSize="11" Margin="12,0,0,0"/><TextBlock Text="{Binding Filename}" FontSize="16" FontWeight="SemiBold" TextTrimming="CharacterEllipsis"/></DockPanel><TextBlock Text="{Binding Path}" Foreground="#63728A" FontSize="11" TextTrimming="CharacterEllipsis" Margin="0,3"/><TextBlock Text="{Binding Snippet}" Foreground="#35435A" FontSize="12" TextWrapping="Wrap" MaxHeight="36"/></StackPanel></DataTemplate></ListBox.ItemTemplate>
+   </ListBox>
+   <DockPanel Grid.Row="3"><TextBlock DockPanel.Dock="Right" Text="Up / Down navigate   Enter open   Esc hide" FontSize="11" Foreground="#63728A"/><TextBlock x:Name="Status" Text="Type a filename, phrase, or idea" FontSize="11" Foreground="#63728A"/></DockPanel>
+  </Grid>
+ </Border>
+</Window>
+
+
