@@ -10,3 +10,7 @@ Verified on Windows on 2026-09-19.
 - Ctrl+Space while a different application was active opened SeekAI and focused its search field. Esc hid the launcher.
 
 Tests use their own temporary directories and print the location for inspection. Offline tests inject an unavailable embedding provider instead of stopping the user's Ollama service. No user documents are included in the test corpus or published repository.
+
+- Clicking the session-notes.md result opened it in the associated editor.
+- Self-contained Release publish and ZIP succeeded. The published executable launched successfully; Settings confirmed 4 unchanged files and 0 re-embedded chunks, with Ollama ready.
+- Private GitHub repository visibility and central-workspace junction were verified.
