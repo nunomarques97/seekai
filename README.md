@@ -7,7 +7,6 @@ A small Windows tray launcher for **filename, full-text, and local semantic sear
 Double-click `Launch-SeekAI.cmd`, or run the portable build:
 
 ```powershell
-cd C:\Users\User\Desktop\Repositorios\seekai
 .\artifacts\SeekAI\SeekAI.exe
 ```
 
@@ -19,7 +18,7 @@ The published Windows x64 folder includes .NET; keep its files together. A porta
 4. **Up / Down** selects, **Enter** opens in the Windows default app, **Esc** hides. Clicking a result also opens it.
 5. Use tray > Settings / Reindex / Quit. Closing Settings keeps SeekAI running. The launcher has a taskbar entry only while visible.
 
-The included `tests/corpus` is indexed on this machine as a demonstration. Add your own folders through Settings; the app never automatically scans your drives.
+The repository includes a small demonstration corpus in `tests/corpus`. Add your own folders through Settings; the app never automatically scans your drives.
 
 ## Local AI
 
@@ -29,14 +28,15 @@ Start Ollama, then use **Download embedding model** in Settings, or:
 ollama pull nomic-embed-text
 ```
 
-The model was installed and verified during development on this machine. See [Ollama's embedding API](https://docs.ollama.com/api/embed). SeekAI sends embedding requests exclusively to `http://127.0.0.1:11434`, bypassing HTTP proxies. Model downloads require internet access but contain no file data. Normal searches do not invoke a generative LLM. Without Ollama/model availability, filename and text search continue; Reindex fills missing embeddings when it returns.
+See [Ollama's embedding API](https://docs.ollama.com/api/embed). SeekAI sends embedding requests exclusively to `http://127.0.0.1:11434`, bypassing HTTP proxies. Model downloads require internet access but contain no file data. Normal searches do not invoke a generative LLM. Without Ollama/model availability, filename and text search continue; Reindex fills missing embeddings when it returns.
 
 ## Build and test
 
 Requires the .NET 10 SDK; package restore needs internet on the first build.
 
+From the repository root:
+
 ```powershell
-cd C:\Users\User\Desktop\Repositorios\seekai
 dotnet build -c Release
 dotnet run --project tests/SeekAI.Tests
 dotnet run --project tests/SeekAI.Tests -- --live
@@ -58,5 +58,3 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build.ps1
 ## V1 limits
 
 No filesystem watcher: use Reindex or restart after edits. No OCR; scanned/encrypted or malformed PDFs may be skipped or have no extractable content. PDF layout reading order depends on the source PDF. Filename search covers only the supported indexed file types. Semantic search scans stored vectors locally and is intended for modest personal collections, not millions of files. Its relevance is approximate and cold-model startup can be slower; text results remain usable while it loads. No automatic Windows login startup or installer/updater. Index change detection assumes applications update the modification timestamp or file size. Keep the fixed embedding model unchanged; delete the local index and restart if you manually replace its underlying model weights.
-
-Canonical source: `C:\Users\User\Desktop\Repositorios\seekai`. The central workspace entry is a directory junction, not a duplicate repository.
