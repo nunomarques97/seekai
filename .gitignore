@@ -4,3 +4,15 @@ artifacts/
 .vs/
 *.user
 *.db*
+
+# Credentials
+.env
+.env.*
+*.key
+*.pem
+*.jks
+*.keystore
+google-services.json
+credentials.json
+*token*
+*secret*
